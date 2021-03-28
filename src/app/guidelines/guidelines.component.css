@@ -1,0 +1,17 @@
+.container-fluid{
+    background: #b5c2be;
+    height: 85vh;
+}
+
+.card{
+    height: 70vh;
+}
+
+button{
+    padding: 8px 20px;
+    margin: 8px 0;
+    cursor: pointer;
+    width: 50%;
+}
+
+

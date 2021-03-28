@@ -1,0 +1,310 @@
+
+
+[{
+    "section":[{
+        "testEnvironment":[{
+             "parameter":[{
+                "testEnvironmentAvailability":[{
+                    "questionLevel":[{ 
+                       "one":[{
+                        "questionNo":1,
+                        "questionDescription":"Testing is being done in Development environment",
+                        "response":[
+                            { "option":"yes", "points":1},
+                            { "option":"no", "points":0}
+                           ]      
+                          }],
+                       "two":[{ 
+                       "questionNo":2,
+                       "questionDescription":"Does the application have dedicated test environment",
+                       "response":[
+                        { "option":"yes", "points":0},
+                        { "option":"no", "points":1}
+                       ]             
+                                                                 }],
+                                                           
+                       "three":
+                        [
+                          {               "questionNo":3,
+                                         "questionDescription":"Application testing is done by QA team",
+                                         "response":[
+                                          { "option":"yes", "points":0},
+                                          { "option":"no", "points":1}
+                                         ]  
+                                                                                          
+                                                                                    },
+                                                                             
+                                                                
+                         {               "questionNo":4,
+                                         "questionDescription":"Multiple test environment available (QA/UAT)",
+                                         "response":[
+                                          { "option":"yes", "points":0},
+                                          { "option":"no", "points":1}
+                                         ]  
+                                                                          
+                                                                 }
+                        ],
+                                                             
+                       "four":[
+                                        { "questionNo":5,
+                                         "questionDescription":"Staging/PreProd/Prod Support environment available",
+                                         "response":[
+                                          { "option":"yes", "points":0},
+                                          { "option":"no", "points":1}
+                                         ]
+                                        },                                  
+                                           {                     
+                                         "questionNo":6,
+                                         "questionDescription":"Behaviour/Characteristics should be near replica of prod",
+                                         "response":[
+                                          { "option":"yes", "points":0},
+                                          { "option":"no", "points":1}
+                                         ]  
+                                                          
+                                        }                                               
+                                                    ],
+                                                           
+                       "five":[{
+                         "questionNo":7,
+                         "questionDescription":"Test environment on cloud.",
+                         "response":[
+                          { "option":"yes", "points":0},
+                          { "option":"no", "points":1}
+                         ]  
+                                                                                      
+                                                                        }]
+                       }]
+
+          }],
+"environmentProvisioning":[{
+"questionLevel":[{
+                "1,2":[{
+                          "questionNo":"1",
+                          "questionDescription":"Provisioning is done by Dev team",
+                                                                         "Response":[{
+                                                                                  "Yes":
+                                                                                     [{"Points":2}],
+                                                                                   "No":
+                                                                                     [{"Points":0}]
+                                                                                     
+                                                                                    }]
+                                                     }],
+                  "3":[{
+                           "questionNo":[{
+                                            "2":[{
+                                                   "questionDescription":"Provisioning is done by QA team",
+                                                                             "Response":[{
+                                                                                      "Yes":
+                                                                                         [{"Points":0}],
+                                                                                       "No":
+                                                                                         [{"Points":2}]
+                                                                                         
+                                                                                        }]
+                                                                            }],
+                                          "3":[{
+                                                 "questionDescription":"Application code deployed is not older than previous 2 versions",
+                                                                                "Response":[{
+                                                                                         "Yes":
+                                                                                             [{"Points":0}],
+                                                                                         "No":
+                                                                                            [{"Points":2}]
+                                                                                                             
+                                                                                             }]
+                                                                                                }],
+                                          "4":[{
+                                                  "questionDescription":"QA team is configuring end points/tools/dependencies in test env",
+                                                                                "Response":[{
+                                                                                        "Yes":
+                                                                                           [{"Points":0}],
+                                                                                        "No":
+                                                                                           [{"Points":2}]
+                                                                                                                                 
+                                                                                          }]
+                                                                         }]
+                                                                     }]
+                          }],
+                    "4":[{
+                           "questionNo":"5",
+                          "questionDescription":"Provisioning is fully automated and done by triggering a script on test env",
+                                                                             "Response":[{
+                                                                                      "Yes":
+                                                                                         [{"Points":0}],
+                                                                                       "No":
+                                                                                         [{"Points":3}]
+                                                                                         
+                                                                                        }]
+                                                         }],
+                    "5":[{
+                            "questionNo":"6",
+                            "questionDescription":"Provisioning is fully automated on test env on cloud ",
+                                                                                 "Response":[{
+                                                                                          "Yes":
+                                                                                             [{"Points":5}],
+                                                                                           "No":
+                                                                                             [{"Points":4}]
+                                                                                             
+                                                                                            }] 
+                                                                                        }]
+                 }]
+                                                  
+            }]
+        }]
+   }],
+                 
+"testAutomation":[{
+             "parameter":[{
+                "toolChainIntegeration":[{
+                                 "questionLevel":[{
+                    "1":[{
+                         "questionNo":"1",
+                             "questionDescription":"Are Automation tools in scope?",
+                                              "Response":[{
+                                                          "Yes":
+                                                                  [{"Points":0}],
+                                                            "No":
+                                                                   [{"Points":1}]
+                                                                                                         
+                                                      }]
+                          }],
+                     "2":[{
+                             "questionNo":[{
+                                            "2":[{
+                                                "questionDescription":"Automation tools have been evaluated and partially adopted?",
+                                                                       "Response":[{
+                                                                                  "Yes":
+                                                                                      [{"Points":0}],
+                                                                                   "No":
+                                                                                         [{"Points":1}]
+                                                                                                             
+                                                                                  }] 
+                                                     }],
+                                             "3":[{
+                                                  "questionDescription":"There are minimal reporting options",
+                                                                                                    "Response":[{
+                                                                                                             "Yes":
+                                                                                                                 [{"Points":0}],
+                                                                                                             "No":
+                                                                                                                [{"Points":1}]
+                                                                                                                                 
+                                                                                                               }] 
+                                                     }],
+                                            "4":[{
+                                                 "questionDescription":"Debugging is done by analysing system logs",
+                                                            "Response":[{
+                                                                   "Yes":
+                                                                     [{"Points":0}],
+                                                                    "No":
+                                                                     [{"Points":1}]
+                                                                                                                                                     
+                                                                       }]
+                                                   }],
+                                            "5":[{
+                                                 "questionDescription":"Integration with test/defect management tool is  done",
+                                                                                                           "Response":[{
+                                                                                                                  "Yes":
+                                                                                                                    [{"Points":0}],
+                                                                                                                   "No":
+                                                                                                                    [{"Points":1}]
+                                                                                                                                                                                                    
+                                                                                                                      }] 
+                                                            }]
+                                            }]
+                            }],
+                      "3":[{
+                            "questionNo":"6",
+                             "questionDescription":"Below SDLC tool chain has been partially integrated:\r\n1. Maven\r\n2. Git\r\n3. IDE(Eclipse/PyCharm)\r\n4. Zephyr - JIRA\r\n5. Gradle\r\n6. Jenkins",
+                                                                                                 "Response":[{
+                                                                                                             "Yes":
+                                                                                                                     [{"Points":0}],
+                                                                                                               "No":
+                                                                                                                      [{"Points":2}]
+                                                                                                                                                            
+                                                                                                           }]
+                                                              }],
+                        "4":[{
+                             "questionNo":[{
+                                             "7":[{
+                                                   "questionDescription":"SDLC tool chain is fully integrated and in use",
+                                                                                                 "Response":[{
+                                                                                                          "Yes":
+                                                                                                             [{"Points":0}],
+                                                                                                           "No":
+                                                                                                             [{"Points":3}]
+                                                                                                             
+                                                                                                            }] 
+                                                                                                }],
+                                             "8":[{
+                                                    "questionDescription":"Seamless integration with test/defect management system in place",
+                                                                                         "Response":[{
+                                                                                                  "Yes":
+                                                                                                     [{"Points":0}],
+                                                                                                   "No":
+                                                                                                     [{"Points":3}]
+                                                                                                                                                         
+                                                                                                   }]
+                                                                          }],
+                                            "9":[{
+                                                    "questionDescription":"Change management, CI tools are incorporated into SDLC and fully functional",
+                                                                                             "Response":[{
+                                                                                                        "Yes":
+                                                                                                            [{"Points":0}],
+                                                                                                         "No":
+                                                                                                            [{"Points":3}]
+                                                                                                                                                                                                     
+                                                                                                        }] 
+                                                                                                 }]
+                                        }]
+                                 }],
+                        "5":[{
+                              "questionNo":[{
+                                             "10":[{
+                                                  "questionDescription":"CI/CD pipeline is incorporated into SDLC and fully functional",
+                                                                                                     "Response":[{
+                                                                                                              "Yes":
+                                                                                                                 [{"Points":0}],
+                                                                                                               "No":
+                                                                                                                 [{"Points":4}]
+                                                                                                                 
+                                                                                                                }]
+                                                                                                    }],
+                                              "11":[{
+                                                     "questionDescription":"Zephyr integrated with release calender and SNOW",
+                                                                                                 "Response":[{
+                                                                                                         "Yes":
+                                                                                                              [{"Points":0}],
+                                                                                                          "No":
+                                                                                                              [{"Points":4}]
+                                                                                                                                                                       
+                                                                                                                }]
+                                                                  }],
+                                              "12":[{
+                                                       "questionDescription":"Test dockerization in place",
+                                                                                                   "Response":[{
+                                                                                                             "Yes":
+                                                                                                                  [{"Points":0}],
+                                                                                                             "No":
+                                                                                                                  [{"Points":4}]
+                                                                                                                                                                                                                           
+                                                                                                               }]
+                                                                   }],
+                                             "13":[{
+                                                       "questionDescription":"Cloud based testing to achieve level 5 maturity",
+                                                                                                   "Response":[{
+                                                                                                             "Yes":
+                                                                                                                  [{"Points":5}],
+                                                                                                             "No":
+                                                                                                                  [{"Points":4}]
+                                                                                                                                                                                                                                                                               
+                                                                                                                }] 
+                                                                  }]
+                                        }]
+                                     }]
+                    
+                               }]
+                     }] 
+             }]
+         }]
+    }]
+
+
+}]

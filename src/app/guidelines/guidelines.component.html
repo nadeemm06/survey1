@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 pt-5">
+         <div class="card jumbotron">
+          <div class="card-body">
+            <h3>Guidelines</h3>
+            <p>1. Questions will be presented for each parameter level wise,starting from level 1 to 5.</p>
+            <p>2. All questions needed to be answered. In case, it is not applicable, mark it as NA and 
+                provide comments.</p>
+            <p>3. Providing comments or attaching evidence is mandatory for all questions.</p>
+            <p>4. On submission it will go to the reviewer.</p>
+
+            <div class="row">
+                <div class="col-md-5 d-flex justify-content-center h-100">
+                    <button class="btn btn-secondary" type="reset" (click)="abort()">Abort</button>
+                </div>
+                
+                <div class="col-md-6 d-flex justify-content-center h-100">
+                    <button class="btn btn-primary" type="button" (click)="proceed()">Continue</button>
+                </div>
+            </div>
+
+          </div>
+         </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+  </div>
+
+</div>
+

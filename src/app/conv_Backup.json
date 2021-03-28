@@ -1,0 +1,248 @@
+[
+        {
+            "section": "Test environment",
+            "parameter": "Test environment availability ",
+            "questionLevel": "1",
+            "questionNo": 1,
+            "questionDescription": "Testing is being done in Development environment",
+            "response":[
+                {"option":"yes", "points":1},
+                {"option":"no", "points":0}
+               ]
+            
+        },
+        {
+            "questionLevel": "2",
+            "questionNo": 2,
+            "questionDescription": "Does the application have dedicated test environment",
+            "response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":1}
+               ]
+        },
+        {
+            "questionLevel": "3",
+            "questionNo": 3,
+            "questionDescription": "Application testing is done by QA team",
+            "response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":2}
+               ]
+        },
+        {
+            "questionLevel": "3",
+            "questionNo": 4,
+            "questionDescription": "Multiple test environment available (QA/UAT)",
+            "response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":2}
+               ]
+        },
+        {
+            "questionLevel": "4",
+            "questionNo": 5,
+            "questionDescription": "Staging/PreProd/Prod Support environment available",
+            "response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":3}
+               ]
+        },
+        {
+            "questionLevel": "4",
+            "questionNo": 6,
+            "questionDescription": "Behaviour/Characteristics should be near replica of prod",
+            "response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":3}
+               ]
+        },
+        {
+            "questionLevel": "5",
+            "questionNo": 7,
+            "questionDescription": "Test environment on cloud.",
+            "response":[
+                {"option":"yes", "points":5},
+                {"option":"no", "points":4}
+               ]
+        },
+        {
+            "parameter": "Environment Provisioning",
+            "questionLevel": "1&2",
+            "questionNo": 1,
+            "questionDescription": "Provisioning is done by Dev team",
+            "response":[
+                {"option":"yes", "points":2},
+                {"option":"no", "points":0}
+               ]
+        },
+        {
+            "questionLevel": "3",
+            "questionNo": 2,
+            "questionDescription": "Provisioning is done by QA team",
+            "response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":2}
+               ]
+        },
+        {
+            "questionLevel": "3",
+            "questionNo": 3,
+            "questionDescription": "Application code deployed is not older than previous 2 versions",
+            "response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":2}
+               ]
+        },
+        {
+           "questionLevel": "3",
+            "questionNo": 4,
+            "questionDescription": "QA team is configuring end points/tools/dependencies in test env",
+            "response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":2}
+               ]
+        },
+        {
+            "questionLevel": "4",
+            "questionNo": 5,
+            "questionDescription": "Provisioning is fully automated and done by triggering a script on test env",
+            "response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":3}
+               ]
+        },
+        {
+            "questionLevel": "5",
+            "questionNo": 6,
+            "questionDescription": "Provisioning is fully automated on test env on cloud ",
+            "response":[
+                {"option":"yes", "points":5},
+                {"option":"no", "points":4}
+               ]
+        },
+        {
+            "section": "Test Automation",
+            "parameter": "Tool Chain Integration",
+            "questionLevel": "1",
+            "questionNo": 1,
+            "questionDescription": "Are Automation tools in scope?",
+            "response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":1}
+               ]
+        },
+        {
+            "questionLevel": "2",
+            "questionNo": 2,
+            "questionDescription": "Automation tools have been evaluated and partially adopted?",
+            "response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":1}
+               ]
+        },
+        {
+            "questionLevel": "2",
+            "questionNo": 3,
+            "questionDescription": "There are minimal reporting options",
+            "response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":1},
+                {"option":"na", "points":0}
+               ]
+        },
+        {
+            "questionLevel": "2",
+            "questionNo": 4,
+            "questionDescription": "Debugging is done by analysing system logs",
+            "response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":1},
+                {"option":"na", "points":0}
+               ]
+        },
+        {
+            "questionLevel": "2",
+            "questionNo": 5,
+            "questionDescription": "Integration with test/defect management tool is  done",
+            "response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":1}
+               ]
+        },
+        {
+            "questionLevel": "3",
+            "Question#": 6,
+            "questionDescription": "Below SDLC tool chain has been partially integrated:\r\n1. Maven\r\n2. Git\r\n3. IDE(Eclipse/PyCharm)\r\n4. Zephyr - JIRA\r\n5. Gradle\r\n6. Jenkins",
+            "response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":2}
+               ]
+        },
+        {
+            "questionLevel": "4",
+            "questionNo": 7,
+            "questionDescription": "SDLC tool chain is fully integrated and in use",
+            "response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":3}
+               ]
+            
+        },
+        {
+            "questionLevel": "4",
+            "questionNo": 8,
+            "questionDescription": "Seamless integration with test/defect management system in place",
+            "response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":3}
+               ]
+            
+        },
+        {
+            "questionLevel": "4",
+            "questionNo": 9,
+            "questionDescription": "Change management, CI tools are incorporated into SDLC and fully functional",
+            "response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":3}
+               ]
+        },
+        {
+            "questionLevel": "5",
+            "questionNo": 10,
+            "questionDescription": "CI/CD pipeline is incorporated into SDLC and fully functional",
+            "response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":4}
+               ]
+        },
+        {
+            "questionLevel": "5",
+            "questionNo": 11,
+            "questionDescription": "Zephyr integrated with release calender and SNOW",
+            "response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":4}
+               ]
+            
+        },
+        {
+            "questionLevel": "5",
+            "questionNo": 12,
+            "questionDescription": "Test dockerization in place",
+            "response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":4}
+               ]
+            
+        },
+        {
+            "questionLevel": "5",
+            "questionNo": 13,
+            "questionDescription": "Cloud based testing to achieve level 5 maturity",
+            "response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":4}
+               ]
+        }
+    ]

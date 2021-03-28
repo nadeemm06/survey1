@@ -1,0 +1,19 @@
+.container-fluid{
+    background: #b5c2be;
+    height: 85vh;
+}
+
+.lblError{
+    color: red;
+}
+
+.row{
+    padding: 1px;
+}
+
+button{
+    padding: 8px 20px;
+    margin: 8px 0;
+    cursor: pointer;
+    width: 100%;
+}

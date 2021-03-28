@@ -1,0 +1,155 @@
+{
+    "sections":[
+         {"section":"Test Environment",
+          "parameters":[
+              {"parameter":"Test Environment Availability",
+               "level":[
+                       {"questionLevel":1,
+                        "questions":[
+                            {
+                            "questionNo":1,
+                            "questionDescription":"Testing is being done in Development environment",
+                            "response":[
+                                { "option":"yes", "points":1},
+                                { "option":"no", "points":0}
+                                       ]  
+                            }
+                                 ]
+                       },
+                       {"questionLevel":2,
+                        "questions":[
+                               {
+                               "questionNo":2,
+                               "questionDescription":"Does the application have dedicated test environment",
+                               "response":[
+                                   { "option":"yes", "points":0},
+                                   { "option":"no", "points":1}
+                                          ]  
+                               }
+                                    ]
+                       },
+                       {"questionLevel":3,
+                        "questions":[
+                               {
+                               "questionNo":3,
+                               "questionDescription":"Application testing is done by QA team",
+                               "response":[
+                                   { "option":"yes", "points":0},
+                                   { "option":"no", "points":2}
+                                          ]  
+                               },
+                               {
+                                "questionNo":4,
+                                "questionDescription":"Multiple test environment available (QA/UAT)",
+                                "response":[
+                                    { "option":"yes", "points":0},
+                                    { "option":"no", "points":2}
+                                           ]  
+                                }
+                                    ]
+                       },
+                       {"questionLevel":4,
+                        "questions":[
+                               {
+                               "questionNo":5,
+                               "questionDescription":"Staging/PreProd/Prod Support environment available",
+                               "response":[
+                                   { "option":"yes", "points":0},
+                                   { "option":"no", "points":3}
+                                          ]  
+                               },
+                               {
+                                "questionNo":6,
+                                "questionDescription":"Behaviour/Characteristics should be near replica of prod",
+                                "response":[
+                                    { "option":"yes", "points":0},
+                                    { "option":"no", "points":3}
+                                           ]  
+                                }
+                                    ]
+                       },
+                       {"questionLevel":5,
+                        "questions":[
+                               {
+                               "questionNo":7,
+                               "questionDescription":"Test environment on cloud.",
+                               "response":[
+                                   { "option":"yes", "points":5},
+                                   { "option":"no", "points":4}
+                                          ]  
+                               }
+                                    ]
+                       }
+                      ]
+              },
+              {"parameter":"Test Environment Provisioning",
+                "level":[
+                     {"questionLevel":1,
+                      "questions":[
+                             {
+                             "questionNo":1,
+                             "questionDescription":"Provisioning is done by Dev team",
+                             "response":[
+                                 { "option":"yes", "points":1},
+                                 { "option":"no", "points":0}
+                                        ]  
+                             }
+                                  ]
+                     },
+                     {"questionLevel":2,
+                        "questions":[
+                               {
+                               "questionNo":2,
+                               "questionDescription":"Provisioning is done by QA team",
+                               "response":[
+                                   { "option":"yes", "points":1},
+                                   { "option":"no", "points":0}
+                                          ]  
+                               }
+                                    ]
+                       }
+                       ]
+               }
+          ]
+        },
+        
+                 
+        {"section":"Test Automation",
+            "parameters":[
+                {"parameter":"Tool Chain Integeration",
+                 "level":[
+                      {"questionLevel":1,
+                       "questions":[
+                              {
+                              "questionNo":1,
+                              "questionDescription":"Are Automation tools in scope?",
+                              "response":[
+                                  { "option":"yes", "points":12},
+                                  { "option":"no", "points":0}
+                                         ]  
+                              }
+                                   ]
+                      },
+                      {"questionLevel":2,
+                        "questions":[
+                               {
+                               "questionNo":2,
+                               "questionDescription":"Are Automation tools in scope?",
+                               "response":[
+                                   { "option":"yes", "points":0},
+                                   { "option":"no", "points":1}
+                                          ]  
+                               }
+                                    ]
+                       }
+                        ]
+                }
+                
+            ]
+          }
+            
+    ]
+    
+
+
+}

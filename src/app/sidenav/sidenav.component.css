@@ -1,0 +1,43 @@
+.navbar{
+    background-color: #111;
+}
+
+p{
+    color: cornsilk;
+    padding: 0.5em 1em 0 2em;
+}
+
+ng-sidebar-container{
+    height: 100vh;
+}
+
+::ng-deep .ng-sidebar{
+    width: 280px;
+    padding: 2em 3em;
+    box-shadow: 0 0 2.5em rgba(85, 85, 85, 0.5);
+}
+
+.sidebar a {
+    text-decoration: none;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #111;
+}
+
+.sidebar .close {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the side nav
+   (less padding and smaller font size)*/
+@media screen and (max-height:450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+}

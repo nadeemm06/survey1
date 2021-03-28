@@ -1,0 +1,5 @@
+response:[
+{"vallue":"yes", "score":1, "label":"Answer1:},
+{"vallue":"no", "score":2, "label":"Answer2:},
+{"vallue":"NA", "score":0, "label":"Answer3:}
+]

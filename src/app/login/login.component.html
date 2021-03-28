@@ -1,0 +1,34 @@
+<div class="container-fluid">
+
+    <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+    <div class="container pt-4" >
+      <div class="jumbotron">
+        <h5>Test Automation Maturity Assessment</h5>
+        <form name="loginForm" [formGroup]="loginForm" (ngSubmit)="loginUser()">
+            <div class="form-group">
+                <label>Email <span class="lblError">*</span></label>
+                <input [class.is-invalid]="loginForm.get('email').invalid && loginForm.get('email').touched" formControlName="email" type="text" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter Your Email" [(ngModel)]=login.email required>
+                <small *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched" class="text-danger">Email required!</small>
+                <small *ngIf="loginForm.get('email').hasError('pattern')" class="text-danger">Invalid email!</small>
+            </div>
+
+            <div class="form-group">
+                <label>Password <span class="lblError">*</span></label>
+                <input [class.is-invalid]="loginForm.get('password').invalid && loginForm.get('password').touched" formControlName="password" type="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter Your Password" [(ngModel)]=login.password required>
+                <small *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched" class="text-danger">Password required!</small>
+                <small *ngIf="loginForm.get('password').hasError('pattern')" class="text-danger">Password criteria mismatch!</small>
+            </div>
+
+
+            <button class="btn btn-primary" type="submit" [disabled]="loginForm.invalid">Submit</button>
+         
+
+        </form>
+      </div>
+    </div>
+    </div>
+    <div class="col-md-4"></div>
+    </div>
+</div>

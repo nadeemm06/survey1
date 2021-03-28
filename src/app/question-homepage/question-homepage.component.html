@@ -1,0 +1,132 @@
+<div class="row">
+  <div class="col-md-3">
+    <app-sidenav></app-sidenav> 
+  </div>
+
+  <div class="col-md-8 pt-3">
+    <div class="container">
+      <div class="row">
+    
+        <div class="card">
+          <div class="card-body">
+    
+                <div class="col-sm-8 offset-2">
+                  <p class="text-right">Total Points: {{totalPoints}}</p>
+                  <p class="text-center">{{currentQuestion +1}} of {{conv.length}}</p>
+  
+                  <p>Section: {{conv[currentSection].section}}</p>
+                  <p>Parameter: {{ conv[currentParameter].parameter }}</p>
+                  <p>Level:  {{ conv[currentLevel].questionLevel }}</p>
+                  
+                   <h6><span>{{ conv[currentQuestion].questionNo }}.</span>{{ conv[currentQuestion].questionDescription }}</h6>
+                  
+    
+                  <ul class="list-group" *ngFor="let c of conv[currentQuestion].response">
+                    
+                    <label>
+                    <li class="list-group-item">
+                      {{c.points}}
+                      <input type="radio" name="options" (change)="onOpt(c.options)" [disabled]="answerSelected">
+                      {{c.option}}
+                    </li>
+                    </label>
+                  </ul> 
+    
+                    <div class="row" >
+                      <div class="col-sm-4 offset-1">
+                        <input type="file"  [hidden]="fileHide">
+                      </div>
+                      <div class="col-sm-4 offset-2">
+                        <div class="form-group" >
+                          <label for="comment" ></label>
+                          <textarea class="form-control"  id="comment"  [hidden]="commentHide" placeholder="write your comment here"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6" >
+                        <button class="btn btn-success text-right" [disabled]="btnDisabled"   type="submit" (click)="nextQuestionClick()">Submit</button>
+  
+                      </div>
+                    </div>
+                  
+    
+    
+                </div>
+    
+          </div>
+        </div>
+    
+      </div>
+    </div>
+    
+    
+    </div>
+    
+
+
+
+
+
+
+
+    <div class="container" *ngFor='let s of section'>
+      <h4>section: {{s.section}} </h4>
+      <div><b>parameter: {{s.parameters[0].parameter}}</b></div> 
+      <h4>Level:{{s.parameters[0].level[0].questionLevel}}</h4>
+      <h4>Question: {{s.parameters[0].level[0].questions[0].questionNo}} - {{s.parameters[0].level[0].questions[0].questionDescription}}</h4>
+      <h5>Response: {{s.parameters[0].level[0].questions[0].response[0].option}}</h5>
+      <p *ngFor='let r of questions[currentNew].response'>{{r.points}}<input type="radio" (change)="optn(r.points)" name="opt"> {{r.option}} </p>
+      
+          <div class="card bg-success p-3"  *ngFor='let p of parameter'>parameter: {{p.parameter}} 
+                <div *ngFor='let l of level'>level: {{l.questionLevel}}
+                  <p>==>Q{{l.questions[0].questionNo}} {{l.questions[0].questionDescription}}</p>
+                  <p *>==>{{l.questions[0].response[0].option}} | {{l.questions[0].response[0].points}} </p>
+                 
+  
+                   <p *ngFor='let q of questions'>question: {{q.questionNo }} {{q.questionDescription}}  </p>
+                  <p *ngFor='let r of response'><input type="radio" name="opt">{{r.points}} {{r.option}} </p>
+                </div>
+          </div>
+    
+  
+  </div>
+  <!-- <div *ngFor="let cric of section | keyvalue">{{cric.key}}:
+    <div *ngFor="let subItem of cric.value | keyvalue">
+      {{subItem.key}}: {{subItem.value}}
+    </div>
+  </div> -->
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,82 @@
+
+      [{
+        "section":[{
+           "testEnvironment":{
+          "parameter":[{
+            "testEnvAvail":[{
+              "Ql1":[{
+                "qNo": 1,
+                "Qdesc":"This is first question",
+                  "response":[
+                   {"option":"yes", "points":1},
+                   { "option":"no", "points":1},
+                   { "option":"na", "points":0}
+                  ]
+              }],
+              "Ql2":[{
+                "qNo": 2,
+                "Qdesc":"This is Second question",
+                  "response":[
+                   {"option":"yes", "points":0},
+                   { "option":"no", "points":1},
+                   { "option":"na", "points":0}
+                  ]
+              }],
+              "Ql3":[{
+                "qNo": 3,
+                "Qdesc":"This is third question",
+                  "response":[
+                   {"option":"yes", "points":0},
+                   { "option":"no", "points":2},
+                   { "option":"na", "points":0}
+                  ]
+              },
+              {
+                "qNo": 4,
+                "Qdesc":"This fourth question",
+                  "response":[
+                   {"option":"yes", "points":0},
+                   { "option":"no", "points":2},
+                   { "option":"na", "points":0}
+                  ]
+              }]
+            }],
+            "testEnvAuto":[{
+              "Ql1":[{
+                "Qdesc":"This is first question",
+                "response":[
+                  {"option":"yes", "points":1},
+                  { "option":"no", "points":1},
+                  { "option":"na", "points":0}
+                 ]
+              }]
+            }]
+        }]
+             },
+               "testAuto":{
+          "parameter":[{
+            "testEnvAvail":[{
+              "Ql1":[{
+                "Qdesc":"This is first question",
+                  "response":{
+                    "yes":1,
+                    "no":2,
+                    "na" :0
+                  }
+              }]
+            }],
+            "testEnvAuto":[{
+              "Ql1":[{
+                "Qdesc":"This is first question",
+                  "response":{
+                    "yes":1,
+                    "no":2,
+                    "na" :0
+                  }
+              }]
+            }]
+        }]
+             }
+          }]
+      }]
+    

@@ -1,0 +1,70 @@
+[
+    {
+      "Section":"Test environment",
+      "Parameter":"Test environment availability",
+      "QL": 1,
+      "QNo":1,
+      "QDesc":"Testing is being done in Development environment",
+      "Response":[
+                {"option":"yes", "points":1},
+                {"option":"no", "points":0}
+               ]
+     },
+     {
+      "Section":"Test environment",
+      "Parameter":"Test environment availability",
+      "QL": 2,
+      "QNo":2,
+      "QDesc":"Does the application have dedicated test environment",
+      "Response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":1}
+               ]
+     },
+     {
+      "Section":"Test environment",
+      "Parameter":"Test environment availability",
+      "QL": 3,
+      "QNo":3,
+      "QDesc":"Application testing is done by QA team",
+      "Response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":2}
+               ]
+     },
+     {
+      "Section":"Test environment",
+      "Parameter":"Test environment Availability",
+      "QL": 3,
+      "QNo":4,
+      "QDesc":"Multiple test environment available (QA/UAT)",
+      "Response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":2}
+               ]
+     },
+     {
+        "Section":"Test environment",
+        "Parameter":"Test environment Availability",
+        "QL": 4,
+        "QNo":5,
+        "QDesc":"Staging/PreProd/Prod Support environment available",
+      "Response":[
+                {"option":"yes", "points":0},
+                {"option":"no", "points":3}
+               ]
+     },
+     {
+        "Section":"Test environment",
+        "Parameter":"Test environment Availability",
+        "QL": 5,
+        "QNo":6,
+        "QDesc":"Behaviour/Characteristics should be near replica of prod",
+      "Response":[
+                {"option":"yes", "points":5},
+                {"option":"no", "points":4}
+               ]
+     }
+
+
+  ]

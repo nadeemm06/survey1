@@ -1,0 +1,101 @@
+<div class="container-fluid">
+ <div class="container">
+
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 pt-3">
+         <div class="card" style="background-color: lightgrey">
+          <div class="card-body">
+            
+            <h6>Welcome User</h6>
+            <div>
+                <p>Understanding of current maturity level of all applications and tracking it on a
+                     regular basis is an important aspect of IT transformation roadmap.</p>
+                <p>The following assessment would help in understanding the current test maturity of
+                    all applications.</p>
+            </div>
+
+            <form [formGroup]="welcomeForm" (ngSubmit)="welcomeUser()">
+            <div class="form-group">
+            <div class="row">
+                
+                <div class="col-md-5"><label for="Account" class="form-label">Please Select Your Account<span class="lblError">*</span></label></div>
+                <div class="col-md-6">
+                    
+                    <select  [class.is-invalid]="welcomeForm.get('Account').invalid && 
+                    welcomeForm.get('Account').touched"  name="Account" id="Account" 
+                    formControlName="Account" class="form-control"  [(ngModel)]=welcome.Account required>          
+                     <option selected value="">Select Account:</option> 
+                     <option *ngFor='let welc of account'>{{welc.name}} </option>
+                    
+                    
+                    </select>
+                     <small *ngIf="welcomeForm.get('Account').hasError('required') && welcomeForm.get('Account').touched" class="text-danger">Please choose an account!</small>
+                </div>
+            </div>
+            </div>
+
+             <div class="form-group">
+            <div class="row">
+                <div class="col-md-5"><label for="BU" class="form-label">Please Select your BU<span class="lblError">*</span></label></div>
+                <div class="col-md-6">
+                    
+                     <select [class.is-invalid]="welcomeForm.get('BU').invalid && 
+                     welcomeForm.get('BU').touched" name="BU" id="BU" 
+                     formControlName="BU" name="BU" id="BU" formControlName="BU" class="form-control" [(ngModel)]=welcome.BU required>
+                        <option value="">Select BU:</option>
+                       <option *ngFor='let welc of bu'>{{welc.name}} </option>
+                     </select> 
+                     <small *ngIf="welcomeForm.get('BU').hasError('required') && welcomeForm.get('BU').touched" class="text-danger">Please choose BU!</small>
+                    
+                </div>
+            </div>
+            </div>
+
+            <div class="form-group">
+            <div class="row">
+                <div class="col-md-5"><label for="Application" class="form-label">Please Select Your Application<span class="lblError">*</span></label></div>
+                <div class="col-md-6">
+                    
+                     <select [class.is-invalid]="welcomeForm.get('Application').invalid && 
+                     welcomeForm.get('Application').touched" name="Application" id="Application" 
+                     formControlName="Application" name="Application" id="Application" formControlName="Application" class="form-control" [(ngModel)]=welcome.Application required>
+                        <option selected value="">Select Application:</option>
+                        <option *ngFor='let welc of application'>{{welc.name}} </option>
+                    </select> 
+                     <small *ngIf="welcomeForm.get('Application').hasError('required') && welcomeForm.get('Application').touched" class="text-danger">Please choose an application!</small>
+
+                </div>
+            </div>
+            </div> 
+            
+            <div class="row">
+                <div class="col-md-5 d-flex justify-content-center h-100">
+                    <button class="btn btn-secondary" type="reset" >Reset</button>
+                </div>
+                
+                <div class="col-md-6 d-flex justify-content-center h-100">
+                    <button class="btn btn-primary" [disabled]="welcomeForm.invalid" type="submit">Submit</button>
+                </div>
+            </div>
+
+
+          </form>
+
+          </div>
+         </div> 
+        </div>
+        <div class="col-md-2"></div>
+        
+
+
+      
+    </div>
+
+
+
+  
+
+ </div>
+</div>
