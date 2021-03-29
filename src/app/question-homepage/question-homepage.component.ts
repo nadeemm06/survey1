@@ -1,13 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Ques } from '../question';
-import { Questionaire } from '../questionaire';
 import { QuestionsService } from "../questions.service";
-import  Questionaires  from "../questionaires.json";
-import  Questionss  from "./questions.json";
-import Answers from "./answers.json"
 import Conv from "../conv.json"
-import { Questions } from '../questions';
 import New from './new.json';
 
 @Component({
@@ -16,11 +10,19 @@ import New from './new.json';
   styleUrls: ['./question-homepage.component.css']
 })
 export class QuestionHomepageComponent implements OnInit {
-  
+  @Input() questionIndex: number;
 
   newAns : any;
   newAns1= [] ;
-  section:any;
+  questionare=[];
+  sections:any;
+  TestEnvsection:any;
+  TestAutosection:any;
+  questArray:[];
+  level1questions = []; 
+  parameter1= [];
+  question1=[];
+  
   parameter:any;
   level:any;
   questions:any;
@@ -47,13 +49,173 @@ export class QuestionHomepageComponent implements OnInit {
   
   
   currentQuestion =0;
+  current=0;
   answerSelected = false;
-  totalPoints :any;
+  totalPoints :number;
   btnDisabled = true;
   fileHide =true;
   commentHide = true;
   options:string;
   points:any;
+  
+
+  
+
+
+ 
+
+  constructor(private router: Router, private questionsService: QuestionsService) { }
+
+  ngOnInit(): void {
+    
+
+
+
+
+
+     this.sections = this.new["sections"];
+  this.TestEnvsection = this.new["sections"][0];
+  this.TestAutosection = this.new["sections"][1];
+
+  // console.log(this.TestEnvsection.parameters,"sdsa");
+
+// First section starts here
+  // this.TestEnvsection.parameters.forEach(sectionlevel => {
+  //   sectionlevel.level.forEach(parameterlevel => {
+  //     parameterlevel.questions.forEach(questionsl1 => {
+  //       console.log(questionsl1,"questions");
+
+  //       this.level1questions.push(questionsl1)
+  //     });
+  //   });
+  // });
+
+    this.TestEnvsection.parameters.forEach(parameterlevel => {
+      this.parameter1.push(parameterlevel)
+     // console.log(parameterlevel,"paralevel");
+      parameterlevel.level.forEach(questionlevel => {
+        this.question1.push(questionlevel)
+       // console.log(questionlevel,"questionlevel");
+        questionlevel.questions.forEach(questionsl1 => {
+        //  console.log(questionsl1,"questions");
+  
+          this.level1questions.push(questionsl1)
+        });
+     });
+    });
+
+
+ // console.log(this.level1questions,"test");
+
+
+  // active = this.TestEnvsection
+
+  // if(localvariable){
+  //     Active = this.TestEnvsection
+  // }
+
+  // Second section starts here
+  // this.TestAutosection.parameters.forEach(sectionlevel => {
+  //   console.log(sectionlevel,"section level")
+  //   sectionlevel.level.forEach(parameterlevel => {
+  //     console.log(parameterlevel,"parameter");
+  //     parameterlevel.questions.forEach(questions => {
+  //       console.log(questions,"questions");
+  //     });
+  //   });
+  // });
+
+
+
+
+
+    //  this.parameter=this.section.parameters;
+    //  console.log(this.parameter, "ppppppp");
+     
+    //  this.level = this.parameter;
+    //  this.level.forEach(element => {
+    //    console.log(element,'level');
+    //  });
+
+    //  console.log(this.level, "lllll");
+
+     
+      
+
+    //  this.questions = this.level[0].questions;
+    // this.level.forEach(element => {
+      // this.questArray = element.questionLevel;
+      // this.questArray.push(element.questions)
+      // console.log(element.questions[0],"elements")
+      
+    // });
+    //  console.log(this.questArray, "qqqqq")
+
+    //  this.response = this.questions[0].response;
+    //  console.log(this.response, "rrrr");
+
+
+    this.questionare = this.sections.map((sec)=>{
+     // console.log(sec,"section")
+      let paraObject = sec.parameters.map((para)=>{
+        
+       
+       // console.log(para, "parameter")
+        let levelObject = para.level.map((lev)=>{
+        //  console.log(lev, "level")
+          let questionObject = lev.questions.map((que)=>{
+         //   console.log(que, "question")
+            let responseObject = que.response.map((res)=>{
+           //   console.log(res, "response")
+              
+            });
+            que.option = responseObject;
+            return que;
+          });
+          lev.questionNo = questionObject;
+          return lev;
+        });
+        para.questionLevel = levelObject;
+        return para;
+       // return this.parameter.find((para, index) => {return index === para});
+    });
+    sec.parameter = paraObject;
+    return sec;    
+  });
+
+
+
+
+    
+
+
+
+
+  }
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  onOptClick(points: number){
+    if(points !== null){
+    this.totalPoints= points;
+    console.log(this.totalPoints)
+    
+    
+    }
+  }
   
   onOpt(points: number){
     if(points !== null){
@@ -62,14 +224,7 @@ export class QuestionHomepageComponent implements OnInit {
       this.btnDisabled = false;
       this.fileHide = false;
       this.commentHide= false;
-      console.log(this.currentSection++)
-     if( this.currentSection==null){
-
-      this.currentParameter ++;
-      this.currentQuestion++;
-      this.currentLevel++;
-     }; 
-     
+      
     }
   }
  
@@ -77,8 +232,14 @@ export class QuestionHomepageComponent implements OnInit {
     this.answerSelected = true; 
     
     setTimeout(()=>{
-      
-      this.currentQuestion++
+      if( this.currentSection!==null){
+        this.currentSection++;
+        this.currentParameter ++;
+        this.currentLevel++;
+        this.currentQuestion++
+     
+      }; 
+     
       this.answerSelected = false; 
      
     },1000);
@@ -88,57 +249,52 @@ export class QuestionHomepageComponent implements OnInit {
   
   }
 
-
- 
-
-
- 
-
-  constructor(private router: Router, private questionsService: QuestionsService) { }
-
-  ngOnInit(): void {
-    
   
-
-
-
-    this.section=this.new["sections"];
-     console.log(this.section, "sssss");
-
-     this.parameter=this.section[0].parameters;
-     console.log(this.parameter, "ppppppp");
-     
-     this.level = this.parameter[0].level;
-     console.log(this.level, "lllll");
-
-     
-      
-
-     this.questions = this.level[0].questions;
-     console.log(this.questions, "qqqqq")
-
-     this.response = this.questions[0].response;
-     console.log(this.response, "rrrr");
-
-    
-
-
-
-
-  }
-
-
-
-  optn(points: number){
-    if(points!==null){
-      console.log(points)
-    }
-  }
+ showCurrentQuestion(){
+  console.log(this.questions,"tyrfyguyuh");
+   
+ }
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+// currentQ=0;
+//   optn(points: number){
+//     if(points!==null){
+//       console.log(points)
+//     }
+//   }
+
+
+
+
+
+ //   let totalQuestions:number, startQuestion: number, lastQuestion: number;
+    //   if (totalQuestions <= 5) {
+    //     startQuestion = 1;
+    //     lastQuestion = totalQuestions;
+    // } else {
+    //     if (currentQuestion <= 3) {
+    //         startQuestion = 1;
+    //         lastQuestion = 5;
+    //     } else if (currentQuestion + 1 >= totalQuestions) {
+    //         startQuestion = totalQuestions - 4;
+    //         lastQuestion = totalQuestions;
+    //     } else {
+    //         startQuestion = currentQuestion - 2;
+    //         lastQuestion = this.currentQuestion+2;
+    //     }
+    // }
 
 
 

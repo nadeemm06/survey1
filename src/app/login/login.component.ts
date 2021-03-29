@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   login: Login = new Login();
   //login = new Login()
+  Error=false;
   message: string;
   loginStatus="false";
   
@@ -44,20 +45,27 @@ export class LoginComponent implements OnInit {
   
     // var form = this.loginForm.controls;
     // console.log(form.email.value);
-
+    
    if(this.loginForm.valid){
+    let loginValue = this.loginForm.value;
+   // this.login(loginValue);
      console.log("If first level");
       if(this.login.email=="a@b.com" && this.login.password=="Test@1234"){
-        console.log("If second level inside");
-          //if(this.loginForm.email=="ndm@gmail.com" && this.loginForm.password=="lti@1234"){
-            alert(JSON.stringify(this.loginForm.value));
+         // if(this.loginForm.email=="ndm@gmail.com" && this.loginForm.password=="lti@1234"){
+           let userEmail = this.login.email;
+            localStorage.setItem('email', userEmail);
             this.router.navigate(['/welcome']);
      
     } else{
       console.log("Else part");
-      alert(JSON.stringify("Inavlid credentials"))
+     // alert(JSON.stringify("Inavlid credentials"))
+     
       
-      this.router.navigate(['/login'])
+      
+        this.Error = true;
+        this.message = "invalid user id/password"
+        window.location.reload();
+        this.router.navigate(['/login'])
     }
 
    }

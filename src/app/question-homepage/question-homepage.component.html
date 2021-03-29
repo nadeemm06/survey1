@@ -26,10 +26,12 @@
                     <label>
                     <li class="list-group-item">
                       {{c.points}}
-                      <input type="radio" name="options" (change)="onOpt(c.options)" [disabled]="answerSelected">
+                      <input type="radio" name="options" (change)="onOpt(c.points)" [disabled]="answerSelected">
                       {{c.option}}
                     </li>
+                    
                     </label>
+                    
                   </ul> 
     
                     <div class="row" >
@@ -69,7 +71,7 @@
 
 
 
-
+<!-- 
     <div class="container" *ngFor='let s of section'>
       <h4>section: {{s.section}} </h4>
       <div><b>parameter: {{s.parameters[0].parameter}}</b></div> 
@@ -78,31 +80,76 @@
       <h5>Response: {{s.parameters[0].level[0].questions[0].response[0].option}}</h5>
       <p *ngFor='let r of questions[currentNew].response'>{{r.points}}<input type="radio" (change)="optn(r.points)" name="opt"> {{r.option}} </p>
       
-          <div class="card bg-success p-3"  *ngFor='let p of parameter'>parameter: {{p.parameter}} 
-                <div *ngFor='let l of level'>level: {{l.questionLevel}}
-                  <p>==>Q{{l.questions[0].questionNo}} {{l.questions[0].questionDescription}}</p>
-                  <p *>==>{{l.questions[0].response[0].option}} | {{l.questions[0].response[0].points}} </p>
-                 
-  
-                   <p *ngFor='let q of questions'>question: {{q.questionNo }} {{q.questionDescription}}  </p>
-                  <p *ngFor='let r of response'><input type="radio" name="opt">{{r.points}} {{r.option}} </p>
-                </div>
-          </div>
+          
     
   
   </div>
+
+
+  <div class="card bg-success p-3"  *ngFor='let p of parameter'>parameter: {{p.parameter}} 
+    <div *ngFor='let l of level'>level: {{l.questionLevel}}
+       <p>==>Question :{{l.questions[0].questionNo}} {{l.questions[0].questionDescription}}</p> 
+      
+      <p >==>{{l.questions[0].response[0].option}} | {{l.questions[0].response[0].points}} </p>
+     
+
+       <p *ngFor='let q of questions'>question: {{q.questionNo }} {{q.questionDescription}}  </p>
+      <p *ngFor='let r of response'><input type="radio" name="opt">{{r.points}} {{r.option}} </p>
+    </div>
+</div> -->
+
+
   <!-- <div *ngFor="let cric of section | keyvalue">{{cric.key}}:
     <div *ngFor="let subItem of cric.value | keyvalue">
       {{subItem.key}}: {{subItem.value}}
     </div>
   </div> -->
-  
-  
-  
+
+  <div *ngFor='let s of sections'> {{s.section}}</div>
+
+  <div *ngFor='let p of parameter1'>{{p.parameter}} {{p.level.questionLevel}}
+  <div *ngFor='let l of p.question1'>{{l.questionLevel}}</div></div>
+  <div *ngFor='let q of level1questions '>
+    <br>
+    <h5>{{q.questionNo}} {{q.questionDescription}}</h5>
+    <br>
+
+  </div>
 
 
 
 
+
+
+<div class="card bg-info" *ngIf="showCurrentQuestion">
+  <ul >
+   Total points: {{totalPoints}}
+    <li *ngFor="let sec of sections" class="list-group-item">
+    {{sec.section}}
+    <ul class="card bg-info">
+        <li *ngFor="let para of sec.parameters" class="list-group-item">
+        {{para.parameter}}
+        <ul class="card bg-info">
+          <li *ngFor='let lev of para.level' class="list-group-item ">
+           Level: {{lev.questionLevel}}
+            <ul class="card bg-info" >
+              <li *ngFor= 'let que of lev.questions' class="list-group-item">Question {{que.questionNo}} : {{que.questionDescription}}
+                <ul>
+                  <li *ngFor='let res of que.response' class="list-group-item">
+                    <input type="radio" name="options" (change)="onOptClick(res.points)">
+                    {{res.option}} {{res.points}}
+                  </li>
+                  <button class="btn btn-success  m-3" type="submit" >Submit</button>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        </li>
+    </ul>
+    </li>
+</ul>
+</div>
 
 
 
