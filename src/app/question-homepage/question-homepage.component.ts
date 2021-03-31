@@ -1,8 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter,  OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
+//import paginate from 'jw-paginate';
+
 import { QuestionsService } from "../questions.service";
 import Conv from "../conv.json"
 import New from './new.json';
+import value from '../conv.json';
 
 @Component({
   selector: 'app-question-homepage',
@@ -10,7 +13,16 @@ import New from './new.json';
   styleUrls: ['./question-homepage.component.css']
 })
 export class QuestionHomepageComponent implements OnInit {
-  @Input() questionIndex: number;
+  totalLength:any;
+  totalLeng:any;
+  page:number=1;
+  para:number=1;
+  questionObject:any;
+  levelObject:any;
+  paraObject:any;
+  responseObject:any;
+
+
 
   newAns : any;
   newAns1= [] ;
@@ -29,19 +41,22 @@ export class QuestionHomepageComponent implements OnInit {
   response:any;
 
 
-  new:{ sections:{section:string;
-       parameters:{parameter:string;
-       level:{ questionLevel:number;
-       questions:{ questionNo:string;
-            questionDescription;
-            response:{option:string;points:number}[],}[],}[],}[],}[],
-           }[]= New;
+  // new:{ sections:{section:string;
+  //      parameters:{parameter:string;
+  //      level:{ questionLevel:number;
+  //      questions:{ questionNo:number;
+  //           questionDescription:string;
+  //           response:{option:string;points:number}[],}[],}[],}[],}[],
+  //          }[]= New;
+
+  new:any[]=New;
+
   currentSection=0;
   currentParameter=0;
   currentLevel=0;
   currentNew=0;
 
-
+  //conv:[];
   conv: {section:string,parameter:string,questionLevel:string,questionNo:string,questionDescription,response:{option:string,points:number}[],}[]= Conv;
   currentConv :any;
    
@@ -66,6 +81,8 @@ export class QuestionHomepageComponent implements OnInit {
 
   constructor(private router: Router, private questionsService: QuestionsService) { }
 
+  
+
   ngOnInit(): void {
     
 
@@ -74,9 +91,11 @@ export class QuestionHomepageComponent implements OnInit {
 
 
      this.sections = this.new["sections"];
+    
   this.TestEnvsection = this.new["sections"][0];
   this.TestAutosection = this.new["sections"][1];
-
+  console.log(this.TestEnvsection);
+       // console.log(this.sections)
   // console.log(this.TestEnvsection.parameters,"sdsa");
 
 // First section starts here
@@ -157,53 +176,56 @@ export class QuestionHomepageComponent implements OnInit {
 
     this.questionare = this.sections.map((sec)=>{
      // console.log(sec,"section")
-      let paraObject = sec.parameters.map((para)=>{
-        
-       
+      this.paraObject = sec.parameters.map((para)=>{
        // console.log(para, "parameter")
-        let levelObject = para.level.map((lev)=>{
+        this.levelObject = para.level.map((lev)=>{
         //  console.log(lev, "level")
-          let questionObject = lev.questions.map((que)=>{
+          this.questionObject = lev.questions.map((que)=>{
          //   console.log(que, "question")
-            let responseObject = que.response.map((res)=>{
-           //   console.log(res, "response")
-              
+            this.responseObject = que.response.map((res)=>{
+           //   console.log(res, "response")      
+                return {option:res.option, points:res.points};     
             });
-            que.option = responseObject;
-            return que;
+            // que.option = this.responseObject;
+            return {questionNo: que.questionNo,questionDescription:que.questionDescription};
           });
-          lev.questionNo = questionObject;
+         // lev.questionNo = this.questionObject;
+          console.log(this.questionObject,"qo")
+          
           return lev;
         });
-        para.questionLevel = levelObject;
+       // para.questionLevel = this.levelObject;
+        
         return para;
-       // return this.parameter.find((para, index) => {return index === para});
+        //return this.parameter.find((para, index) => {return index === para});
     });
-    sec.parameter = paraObject;
+  //  sec.parameter = this.paraObject;
+  
     return sec;    
+    
   });
+  
 
+  
 
+  
+  console.log(this.questionare,"ss")
+  console.log(this.paraObject,"pp");
+  console.log(this.levelObject,"lll");
+  console.log(this.questionObject,"qqqq");
+  console.log(this.responseObject,"rr");
+  this.totalLength = this.sections.length;
+    console.log(this.totalLength,"hg"); 
+  // this.totalLength = this.questionare.length;
+  // console.log(this.totalLength,"hg")
 
-
+  
+    
     
 
 
 
-
   }
-
- 
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -216,15 +238,63 @@ export class QuestionHomepageComponent implements OnInit {
     
     }
   }
+
+  onClick(option:string,points:number,currentSection:number,currentQuestion:number,currentParameter:number,currentLevel:number){
+    if(option=="yes"){
+      this.totalPoints= points;
+      console.log("first if")
+        if( currentSection==0){
+             if(currentParameter==0){
+                if(currentLevel==0){this.currentSection = currentSection +1;}
+                else if(currentLevel >= 1 && currentLevel <= 3){this.currentLevel++;console.log("yehi")}
+                else if(currentLevel == 4){this.currentParameter++;}
+             }
+             else if(currentParameter==1){
+              if(currentLevel < 2){this.currentParameter ++;}
+              else if(currentLevel >= 2 && currentLevel <= 3){this.currentLevel++;console.log("ye")}
+              else if(currentLevel == 4){this.currentParameter++;}
+
+             }
+          
+        }else if(currentSection==1){
+                if(currentParameter==0){
+                  if(currentLevel <= 3){this.currentLevel++;}
+                  else if(currentLevel == 4){this.currentParameter++;}
+                }
+        }
+    }else{
+      this.totalPoints= points;
+      if( currentSection==0){
+              if(currentParameter==0){
+                if(currentLevel ==0 ){this.currentLevel++;}
+                else if(currentLevel >= 1 && currentLevel<=4){this.currentParameter = currentParameter +1;}
+                
+              }
+              else if(currentParameter==1){
+              if(currentLevel < 2){this.currentLevel++;}
+              else if(currentLevel >=2 && currentLevel <=4){this.currentParameter = currentParameter +1;}
+              }
+     
+      }else if(currentSection==1){
+           if(currentParameter==0){
+             if(currentLevel <=4 ){this.currentParameter++;}
+           }
+   }
+      
+    }
+  }
   
   onOpt(points: number){
-    if(points !== null){
+    if(points == 1){
+      console.log("if part")
      //console.log(this.totalPoints +=  points,"if points");
       this.totalPoints= points;
       this.btnDisabled = false;
       this.fileHide = false;
       this.commentHide= false;
       
+    }else{
+      console.log("else part")
     }
   }
  
@@ -251,8 +321,8 @@ export class QuestionHomepageComponent implements OnInit {
 
   
  showCurrentQuestion(){
-  console.log(this.questions,"tyrfyguyuh");
-   
+  //if (this.questionObject){};
+ 
  }
 
 

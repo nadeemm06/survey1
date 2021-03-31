@@ -1,4 +1,4 @@
-<div class="row">
+  <!-- <div class="row">
   <div class="col-md-3">
     <app-sidenav></app-sidenav> 
   </div>
@@ -64,9 +64,9 @@
     
     
     </div>
-    
+      
 
-
+ -->
 
 
 
@@ -104,24 +104,25 @@
       {{subItem.key}}: {{subItem.value}}
     </div>
   </div> -->
+<!--     
+  <div *ngFor='let s of sections'> {{s.section}}  </div>
+  <div *ngFor='let p of parameter1'>parameter:{{p.parameter}}</div>
+    <div *ngFor='let l of question1'>{{l.questionLevel}}
+        <div *ngFor='let q of level1questions '>
+          <br>
+          <h5>question: {{q.questionNo}} {{q.questionDescription}}</h5>
+          <br>
 
-  <div *ngFor='let s of sections'> {{s.section}}</div>
-
-  <div *ngFor='let p of parameter1'>{{p.parameter}} {{p.level.questionLevel}}
-  <div *ngFor='let l of p.question1'>{{l.questionLevel}}</div></div>
-  <div *ngFor='let q of level1questions '>
-    <br>
-    <h5>{{q.questionNo}} {{q.questionDescription}}</h5>
-    <br>
-
-  </div>
-
-
-
+        </div>
+    
+ </div> -->
 
 
 
+
+<!-- 
 <div class="card bg-info" *ngIf="showCurrentQuestion">
+  
   <ul >
    Total points: {{totalPoints}}
     <li *ngFor="let sec of sections" class="list-group-item">
@@ -130,7 +131,7 @@
         <li *ngFor="let para of sec.parameters" class="list-group-item">
         {{para.parameter}}
         <ul class="card bg-info">
-          <li *ngFor='let lev of para.level' class="list-group-item ">
+          <li *ngFor='let lev of para.level'  class="list-group-item ">
            Level: {{lev.questionLevel}}
             <ul class="card bg-info" >
               <li *ngFor= 'let que of lev.questions' class="list-group-item">Question {{que.questionNo}} : {{que.questionDescription}}
@@ -149,16 +150,107 @@
     </ul>
     </li>
 </ul>
+</div> -->
+
+<!-- 
+ <div class="card bg-secondary">
+   <div class="card bg-secondary">
+     <P>{{questionare[currentSection].section}}</P>
+     <div class="card bg-secondary">
+       <p>{{questionare[currentSection].parameters[currentParameter].parameter}}</p>
+       <div class="card bg-secondary">
+         <p>{{questionare[currentSection].parameters[currentParameter].level[currentLevel].questionLevel}}</p>
+         <div *ngFor="let q of questionare[currentSection].parameters[currentParameter].level[currentLevel].questions" class="card bg-secondary">
+           <li class="list-group-item">{{q.questionNo}} {{q.questionDescription}}</li>
+           <li *ngFor="let r of q.response" class="list-group-item"><input type="radio" name="options" (change)="onClick(r.option,r.points,currentSection,currentQuestion,currentParameter,currentLevel)" [disabled]="answerSelected">
+            {{r.option}} {{r.points}}</li>
+           </div>
+        </div>
+      </div>
+    </div>
+</div>   -->
+
+<!-- 
+<div class="card p-5 bg-dark">
+    <P class="card p-1">Section: {{questionare[currentSection].section}}</P>
+   <p class="card p-1">Parameter: {{questionare[currentSection].parameters[currentParameter].parameter}}</p>
+   <p class="card p-1">Level: {{questionare[currentSection].parameters[currentParameter].level[currentLevel].questionLevel}}</p>
+   <div class="card p-3">
+     
+       <p>Question {{questionare[currentSection].parameters[currentParameter].level[currentLevel].questions[currentQuestion].questionNo}}
+          {{questionare[currentSection].parameters[currentParameter].level[currentLevel].questions[currentQuestion].questionDescription}}
+      </p>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let r of questionare[currentSection].parameters[currentParameter].level[currentLevel].questions[currentQuestion].response">
+        <input type="radio" name="options" (change)="onClick(r.option,r.points,currentSection,currentQuestion,currentParameter,currentLevel)" [disabled]="answerSelected"> {{r.option}} {{r.points}}
+    </li> 
+  </ul>
+   </div>
+</div> -->
+
+
+
+
+
+<div class="card p-5 bg-">
+  <ul><p class="text-right">Total Points: {{totalPoints}}</p>
+    <li class="list-group-item">Section: {{questionare[currentSection].section}}
+      <ul>
+        <li class="list-group-item">Parameter: {{questionare[currentSection].parameters[currentParameter].parameter}}
+          <ul>
+            <li class="list-group-item">Level: {{questionare[currentSection].parameters[currentParameter].level[currentLevel].questionLevel}}
+              <ul>
+                <li class="list-group-item">Question {{questionare[currentSection].parameters[currentParameter].level[currentLevel].questions[currentQuestion].questionNo}}
+                  {{questionare[currentSection].parameters[currentParameter].level[currentLevel].questions[currentQuestion].questionDescription}}
+                  <ul>
+                    <li class="list-group-item" *ngFor="let r of questionare[currentSection].parameters[currentParameter].level[currentLevel].questions[currentQuestion].response">
+                      <input type="radio" name="options" (change)="onClick(r.option,r.points,currentSection,currentQuestion,currentParameter,currentLevel)" [disabled]="answerSelected"> {{r.option}} {{r.points}}
+                    </li> 
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 
+<!-- 
+<pagination-controls  id="sec" (pageChange)="page= $event" ></pagination-controls>
+
+  <ul  >
+   Total points: {{totalPoints}}
+    <li *ngFor="let sec of questionare  | paginate:{id: 'sec', itemsPerPage:1, currentPage:page, totalItems: totalLength} " class="list-group-item">
+    {{sec.section}}
+    <ul class="card bg-info">
+        <li *ngFor="let para of sec.parameters" class="list-group-item">
+        {{para.parameter}}
+        <ul class="card bg-info">
+          <li *ngFor='let lev of para.level'  class="list-group-item ">
+           Level: {{lev.questionLevel}}
+            <ul   >
+              <li *ngFor= "let que of lev.questions">Question {{que.questionNo}} : {{que.questionDescription}}
+                <ul>
+                  <li *ngFor='let res of que.response' class="list-group-item">
+                    <input type="radio" name="options" (change)="onOptClick(res.points)">
+                    {{res.option}} {{res.points}}
+                  </li>
+                  <button class="btn btn-success  m-3" type="submit" >Submit</button>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        </li>
+    </ul>
+    </li>
+</ul> 
 
 
-
-
-
-
-
+ -->
 
 
 

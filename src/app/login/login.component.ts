@@ -61,10 +61,13 @@ export class LoginComponent implements OnInit {
      // alert(JSON.stringify("Inavlid credentials"))
      
       
-      
-        this.Error = true;
-        this.message = "invalid user id/password"
-        window.location.reload();
+     this.Error = true;
+     this.message = "invalid user id/password"
+        
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
+        
         this.router.navigate(['/login'])
     }
 
