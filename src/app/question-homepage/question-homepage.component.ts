@@ -1,11 +1,11 @@
-import { Component, Input, OnInit, Output, EventEmitter,  OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit,  Inject, ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
 //import paginate from 'jw-paginate';
 
 import { QuestionsService } from "../questions.service";
-import Conv from "../conv.json"
-import New from './new.json';
-import value from '../conv.json';
+import { CookieService } from 'ngx-cookie';
+import { Questions } from '../questions';
+
 
 @Component({
   selector: 'app-question-homepage',
@@ -13,6 +13,7 @@ import value from '../conv.json';
   styleUrls: ['./question-homepage.component.css']
 })
 export class QuestionHomepageComponent implements OnInit {
+
   totalLength:any;
   totalLeng:any;
   page:number=1;
@@ -21,12 +22,13 @@ export class QuestionHomepageComponent implements OnInit {
   levelObject:any;
   paraObject:any;
   responseObject:any;
+  que:any[];
 
-
+  errorMessage:string='';
 
   newAns : any;
   newAns1= [] ;
-  questionare=[];
+  questionare:any[];
   sections:any;
   TestEnvsection:any;
   TestAutosection:any;
@@ -49,21 +51,22 @@ export class QuestionHomepageComponent implements OnInit {
   //           response:{option:string;points:number}[],}[],}[],}[],}[],
   //          }[]= New;
 
-  new:any[]=New;
+  
 
   currentSection=0;
   currentParameter=0;
   currentLevel=0;
+  currentQuestion =0;
   currentNew=0;
 
-  //conv:[];
-  conv: {section:string,parameter:string,questionLevel:string,questionNo:string,questionDescription,response:{option:string,points:number}[],}[]= Conv;
+  
+  //conv: {section:string,parameter:string,questionLevel:string,questionNo:string,questionDescription,response:{option:string,points:number}[],}[]= Conv;
   currentConv :any;
    
 
   
   
-  currentQuestion =0;
+  
   current=0;
   answerSelected = false;
   totalPoints :number;
@@ -71,31 +74,43 @@ export class QuestionHomepageComponent implements OnInit {
   fileHide =true;
   commentHide = true;
   options:string;
-  points:any;
+  point:number;
   
-
+  secObj:any;
+  paraObj:any;
+  levObj:any;
+  queObj:any;
   
 
 
  
 
-  constructor(private router: Router, private questionsService: QuestionsService) { }
+  constructor(private router: Router, private questionsService: QuestionsService, private cookieService:CookieService) { }
 
   
 
   ngOnInit(): void {
-    
+  //  console.log(this.questionsService.getQuestionare()["sections"],"from the questionsService")
 
+  this.questionare = this.questionsService.getQuestionare()["sections"];
+ this.getParams();
 
+  //  this.questionsService.getQuestionare().subscribe({
+  //    next: questionaires =>{ 
+  //      this.questionare = questionaires['sections'];
+  //      console.log(this.questionare);
+  //     },
+  //    error: err => this.errorMessage = err
+  //  });
+   
+     
 
-
-
-     this.sections = this.new["sections"];
-    
-  this.TestEnvsection = this.new["sections"][0];
-  this.TestAutosection = this.new["sections"][1];
-  console.log(this.TestEnvsection);
+    // this.sections = this.new["sections"];
        // console.log(this.sections)
+ // this.TestEnvsection = this.new["sections"][0];
+  //this.TestAutosection = this.new["sections"][1];
+  //console.log(this.TestEnvsection);
+      
   // console.log(this.TestEnvsection.parameters,"sdsa");
 
 // First section starts here
@@ -109,19 +124,21 @@ export class QuestionHomepageComponent implements OnInit {
   //   });
   // });
 
-    this.TestEnvsection.parameters.forEach(parameterlevel => {
-      this.parameter1.push(parameterlevel)
-     // console.log(parameterlevel,"paralevel");
-      parameterlevel.level.forEach(questionlevel => {
-        this.question1.push(questionlevel)
-       // console.log(questionlevel,"questionlevel");
-        questionlevel.questions.forEach(questionsl1 => {
-        //  console.log(questionsl1,"questions");
+
+    // this.TestEnvsection.parameters.forEach(parameterlevel => {
+    //   this.parameter1.push(parameterlevel)
+    //  // console.log(parameterlevel,"paralevel");
+    //   parameterlevel.level.forEach(questionlevel => {
+    //     this.question1.push(questionlevel)
+    //    // console.log(questionlevel,"questionlevel");
+    //     questionlevel.questions.forEach(questionsl1 => {
+    //     //  console.log(questionsl1,"questions");
   
-          this.level1questions.push(questionsl1)
-        });
-     });
-    });
+    //       this.level1questions.push(questionsl1)
+    //     });
+    //  });
+    // });
+
 
 
  // console.log(this.level1questions,"test");
@@ -174,54 +191,39 @@ export class QuestionHomepageComponent implements OnInit {
     //  console.log(this.response, "rrrr");
 
 
-    this.questionare = this.sections.map((sec)=>{
-     // console.log(sec,"section")
-      this.paraObject = sec.parameters.map((para)=>{
-       // console.log(para, "parameter")
-        this.levelObject = para.level.map((lev)=>{
-        //  console.log(lev, "level")
-          this.questionObject = lev.questions.map((que)=>{
-         //   console.log(que, "question")
-            this.responseObject = que.response.map((res)=>{
-           //   console.log(res, "response")      
-                return {option:res.option, points:res.points};     
-            });
-            // que.option = this.responseObject;
-            return {questionNo: que.questionNo,questionDescription:que.questionDescription};
-          });
-         // lev.questionNo = this.questionObject;
-          console.log(this.questionObject,"qo")
+  //   this.questionare = this.sections.map((sec)=>{
+  //    // console.log(sec,"section")
+  //     this.paraObject = sec.parameters.map((para)=>{
+  //      // console.log(para, "parameter")
+  //       this.levelObject = para.level.map((lev)=>{
+  //       //  console.log(lev, "level")
+  //         this.questionObject = lev.questions.map((que)=>{
+  //        //   console.log(que, "question")
+  //           this.responseObject = que.response.map((res)=>{
+  //          //   console.log(res, "response")      
+  //               return {option:res.option, points:res.points};     
+  //           });
+  //           // que.option = this.responseObject;
+  //           return {questionNo: que.questionNo,questionDescription:que.questionDescription};
+  //         });
+  //        // lev.questionNo = this.questionObject;
+  //        // console.log(this.questionObject,"qo")
           
-          return lev;
-        });
-       // para.questionLevel = this.levelObject;
+  //         return lev;
+  //       });
+  //      // para.questionLevel = this.levelObject;
         
-        return para;
-        //return this.parameter.find((para, index) => {return index === para});
-    });
-  //  sec.parameter = this.paraObject;
+  //       return para;
+  //       //return this.parameter.find((para, index) => {return index === para});
+  //   });
+  // //  sec.parameter = this.paraObject;
   
-    return sec;    
+  //   return sec;    
     
-  });
+  // });
   
 
-  
 
-  
-  console.log(this.questionare,"ss")
-  console.log(this.paraObject,"pp");
-  console.log(this.levelObject,"lll");
-  console.log(this.questionObject,"qqqq");
-  console.log(this.responseObject,"rr");
-  this.totalLength = this.sections.length;
-    console.log(this.totalLength,"hg"); 
-  // this.totalLength = this.questionare.length;
-  // console.log(this.totalLength,"hg")
-
-  
-    
-    
 
 
 
@@ -229,145 +231,195 @@ export class QuestionHomepageComponent implements OnInit {
 
 
 
+@Input() getParams(){
+  this.secObj = this.questionare[this.currentSection].section;
+  this.paraObj = this.questionare[this.currentSection].parameters[this.currentParameter].parameter;
+  this.levObj = this.questionare[this.currentSection].parameters[this.currentParameter].level[this.currentLevel].questionLevel;
+  this.queObj = this.questionare[this.currentSection].parameters[this.currentParameter].level[this.currentLevel].questions[this.currentQuestion].questionNo;
+  console.log('section:', this.secObj)
+  console.log('para:', this.paraObj)
+  console.log('level:', this.levObj)
+  console.log('question', this.queObj)
+  this.router.navigate(['/questions','section',this.secObj,'parameter',this.paraObj,'level',this.levObj,'question',this.queObj])
+    
+}
+  
 
-  onOptClick(points: number){
-    if(points !== null){
-    this.totalPoints= points;
-    console.log(this.totalPoints)
+  onClick(option:string,points:number){
+    this.btnDisabled = false;
+    this.fileHide = false;
+    this.commentHide= false;
+    this.options=option;
+    this.point=points;
     
-    
-    }
   }
 
-  onClick(option:string,points:number,currentSection:number,currentQuestion:number,currentParameter:number,currentLevel:number){
+
+
+  nextClick(questionareObj:any, option:string,points:number,currentSection:number,currentQuestion:number,currentParameter:number,currentLevel:number){
+  setTimeout(() => {
     if(option=="yes"){
-      this.totalPoints= points;
+       console.log(this.currentQuestion, "qq");
+       console.log(this.currentLevel, "l");
+      this.totalPoints = points;
       console.log("first if")
         if( currentSection==0){
              if(currentParameter==0){
-                if(currentLevel==0){this.currentSection = currentSection +1;}
-                else if(currentLevel >= 1 && currentLevel <= 3){this.currentLevel++;console.log("yehi")}
-                else if(currentLevel == 4){this.currentParameter++;}
+                if(currentLevel==0){ 
+                  this.currentParameter++;
+                }else if(currentLevel >= 1 && currentLevel <= 3){
+                    if(1===1){
+                      console.log('full object',questionareObj,"Curent level",currentLevel);
+                    }
+                    if(questionareObj.length > 1 && currentQuestion < questionareObj.length-1  ){
+                      this.currentQuestion++;
+                      console.log(this.currentQuestion, "cq");
+                    } else{
+                      this.currentLevel++;
+                      this.currentQuestion = 0;
+                      console.log("cl");
+                    }
+                    // console.log("current level", currentLevel)
+                }else if(currentLevel == 4){
+                    this.currentParameter++;
+                    this.currentLevel=0;
+                    this.currentQuestion=0;
+                    console.log("pppp")
+                }
              }
              else if(currentParameter==1){
-              if(currentLevel < 2){this.currentParameter ++;}
-              else if(currentLevel >= 2 && currentLevel <= 3){this.currentLevel++;console.log("ye")}
-              else if(currentLevel == 4){this.currentParameter++;}
+                if(currentLevel < 2){ 
+                   this.currentSection++;
+                   this.currentParameter=0;
+                   this.currentLevel=0;
+                }else if(currentLevel >= 2 && currentLevel <= 3){
+                    if(questionareObj.length > 1 && currentQuestion < questionareObj.length-1  ){
+                      this.currentQuestion++;
+                      console.log(this.currentQuestion, "cq");
+                    } else{
+                      this.currentLevel++;
+                      this.currentQuestion = 0;
+                      console.log("cl");
+                    }
+                }else if(currentLevel == 4){
+                  this.currentSection++;
+                  this.currentParameter=0;
+                  this.currentLevel=0;
+                }
 
              }
           
         }else if(currentSection==1){
-                if(currentParameter==0){
-                  if(currentLevel <= 3){this.currentLevel++;}
-                  else if(currentLevel == 4){this.currentParameter++;}
+            if(currentParameter==0){
+                if(currentLevel <= 3){
+                    if(questionareObj.length > 1 && currentQuestion < questionareObj.length-1  ){
+                      this.currentQuestion++;
+                      console.log(this.currentQuestion, "cq");
+                    } else{
+                      this.currentLevel++;
+                      this.currentQuestion = 0;
+                      console.log("cl");
+                    }
+                }else if(currentLevel == 4){
+                    if(questionareObj.length > 1 && currentQuestion < questionareObj.length-1  ){
+                      this.currentQuestion++;
+                      console.log(this.currentQuestion, "cq");
+                    } else{
+                      this.currentParameter++;
+                      this.currentQuestion = 0;
+                      console.log("cl");
+                      this.router.navigate(['thankyou']);
+                    }
                 }
+            }
         }
-    }else{
+    }else if(option=="no"){
+      console.log(this.currentQuestion, "qq else");
+      console.log(this.currentLevel, "l else");
       this.totalPoints= points;
       if( currentSection==0){
-              if(currentParameter==0){
-                if(currentLevel ==0 ){this.currentLevel++;}
-                else if(currentLevel >= 1 && currentLevel<=4){this.currentParameter = currentParameter +1;}
+          if(currentParameter==0){
+              if(currentLevel ==0 ){
+                this.currentLevel++;
+              }else if(currentLevel >= 1 && currentLevel<=4){
+                this.currentParameter++;
+                this.currentLevel=0;
+                this.currentQuestion=0;
+              }
                 
+          }else if(currentParameter==1){
+              if(currentLevel < 2){
+                this.currentLevel++;
+              }else if(currentLevel >=2 && currentLevel <=4){
+                this.currentSection++;
+                this.currentParameter=0;
+                this.currentLevel=0;
+                this.currentQuestion=0;
               }
-              else if(currentParameter==1){
-              if(currentLevel < 2){this.currentLevel++;}
-              else if(currentLevel >=2 && currentLevel <=4){this.currentParameter = currentParameter +1;}
-              }
+          }
      
       }else if(currentSection==1){
-           if(currentParameter==0){
-             if(currentLevel <=4 ){this.currentParameter++;}
-           }
-   }
-      
-    }
-  }
-  
-  onOpt(points: number){
-    if(points == 1){
-      console.log("if part")
-     //console.log(this.totalPoints +=  points,"if points");
-      this.totalPoints= points;
-      this.btnDisabled = false;
-      this.fileHide = false;
-      this.commentHide= false;
+          if(currentParameter==0){
+              if(currentLevel <=4 ){
+                this.currentParameter++;
+                this.router.navigate(['thankyou']);
+              }
+          }
+      }
       
     }else{
-      console.log("else part")
+      this.currentQuestion++;
+      console.log("na")
     }
-  }
- 
-  nextQuestionClick(){
-    this.answerSelected = true; 
-    
-    setTimeout(()=>{
-      if( this.currentSection!==null){
-        this.currentSection++;
-        this.currentParameter ++;
-        this.currentLevel++;
-        this.currentQuestion++
-     
-      }; 
-     
-      this.answerSelected = false; 
-     
+    this.getParams();
+   // this.router.navigate(['/questions','section',this.currentSection,'parameter',this.currentParameter,'level',this.currentLevel,'question',this.currentQuestion]);
+    this.answerSelected = false; 
     },1000);
+    
+
     this.btnDisabled = true;
-      this.fileHide = true;
-      this.commentHide= true;
-  
+    this.fileHide = true;
+    this.commentHide= true;
+
   }
 
+
+
   
- showCurrentQuestion(){
-  //if (this.questionObject){};
  
- }
+  
+
+//   uploadFile($event) {
+//     console.log($event.target.files[0]); // outputs the first file
+// }
+ 
+//adding  files
+@ViewChild('attachments') attachment: any;
+fileList: File[] = [];
+listOfFiles: any[] = [];
+
+onFileChanged(event: any) {
+    for (var i = 0; i <= event.target.files.length - 1; i++) {
+      var selectedFile = event.target.files[i];
+      this.fileList.push(selectedFile);
+      this.listOfFiles.push(selectedFile.name)
+  }
+
+  this.attachment.nativeElement.value = '';
+}
+//removing files
+removeSelectedFile(index) {
+ // Delete the item from fileNames list
+ this.listOfFiles.splice(index, 1);
+ // delete file from FileList
+ this.fileList.splice(index, 1);
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-// currentQ=0;
-//   optn(points: number){
-//     if(points!==null){
-//       console.log(points)
-//     }
-//   }
-
-
-
-
-
- //   let totalQuestions:number, startQuestion: number, lastQuestion: number;
-    //   if (totalQuestions <= 5) {
-    //     startQuestion = 1;
-    //     lastQuestion = totalQuestions;
-    // } else {
-    //     if (currentQuestion <= 3) {
-    //         startQuestion = 1;
-    //         lastQuestion = 5;
-    //     } else if (currentQuestion + 1 >= totalQuestions) {
-    //         startQuestion = totalQuestions - 4;
-    //         lastQuestion = totalQuestions;
-    //     } else {
-    //         startQuestion = currentQuestion - 2;
-    //         lastQuestion = this.currentQuestion+2;
-    //     }
-    // }
-
-
-
+ 
+ 
+  
+ 
 
 
 

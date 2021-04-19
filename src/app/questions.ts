@@ -1,11 +1,10 @@
 export class Questions{
-    section:{
-            parameter:{
-                    questionLevel:{
-                              questionNo:string;
-                             questionDescription;
-                             response:{option:string;points:number}[],}[],}[],}[];
-                            
-                            
-                            
-                            }
+         sections:{section:string;
+                   parameters:{parameter:string;
+                               level:{ questionLevel:number;
+                                       questions:{ questionNo:number;
+                                                   questionDescription:string;
+                                                   response:{option:string;points:number}[],}[],}[],}[],
+                  }[];
+                        
+}

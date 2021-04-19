@@ -1,0 +1,27 @@
+[
+    {"section":"Test Environment",
+     "parameters":[
+         {"parameter":"Test Environment Availability",
+          "level":[
+              {"questionLevel":1,
+                "questions":[
+                    {"questionNo":1,
+                     "questionDesc":"Testing is being done in Development environment",
+                     "response":[
+                         {"option":"yes","points":1},
+                         {"option":"no","points":0}
+                     ]
+                    }
+                ]
+              },
+              {"questionLevel":2},
+              {"questionLevel":3},
+              {"questionLevel":4},
+              {"questionLevel":5}
+          ]
+        },
+         {"parameter":"Test Environment Provisioning"}
+    ]
+    },
+    {"section":"Test Automation"}
+]

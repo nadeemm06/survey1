@@ -19,7 +19,10 @@ export class GuidelinesComponent implements OnInit {
   }
 
   abort(){
-    this.router.navigate(['/login']);
+    sessionStorage.clear();
+    this.router.navigate(['/login']).then(()=>{
+      window.location.reload();
+    });
   }
   
 

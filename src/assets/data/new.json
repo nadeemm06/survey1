@@ -1,6 +1,6 @@
 {
-    "sections":[
-         {"section":"Test Environment",
+ "sections":[
+        {"section":"Test Environment",
           "parameters":[
               {"parameter":"Test Environment Availability",
                "level":[
@@ -301,7 +301,7 @@
                 }
                 
             ]
-          }
+        }
             
     ]
     

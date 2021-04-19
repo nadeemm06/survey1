@@ -10,11 +10,28 @@
                   </div>
                 </div>
           
-                <div class="col-md-6"></div>
+                <div class="col-md-7"></div>
           
-                <div class="col-md-3">
+                <div class="col-md-2 pl-5">
                   <div class="content-user">
-                  <h6>{{ userEmail }}</h6>
+                  <!-- <h6><i class='far fa-user-circle' style='font-size:36px;'></i>{{ userEmail }}</h6> -->
+
+
+                  <div class="profile-btn" *ngIf="status">
+                    <!-- <button class="btn btn-success"> profile</button> -->
+            
+                    <button  type="submit" (click)="myFunction()" class="btn btn-success"><i class='far fa-user-circle' style='font-size:36px;'></i></button>
+                    <div *ngIf="showDropdown">
+                    <div class="dropdown" id="dd">
+                      <select (click)="onChange($event.target.value)">
+                        <option value="SeeProfile">{{ userEmail }}</option>
+                        <option value="Signout">Sign Out</option>
+                      </select>
+                    </div>
+                  </div>
+                  </div>
+
+
                   </div>
                 </div>
               </div>

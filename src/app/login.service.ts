@@ -19,10 +19,16 @@ export class LoginService {
     }
   }
 
+  loggedIn(){
+    return !!sessionStorage.getItem('email')
+  }
+
   constructor(private http: HttpClient) { }
 
-  login(login: Login) : Observable<LoginStatus> {
-    let url = 'http://localhost:8080/login';
-    return this.http.post<LoginStatus>(url, Login);
-  }
+  // login(login: Login) : Observable<LoginStatus> {
+  //   let url = 'http://localhost:8080/login';
+  //   return this.http.post<LoginStatus>(url, Login);
+  // }
+
+   
 }

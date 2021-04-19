@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie';
+import { QuestionsService } from '../questions.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -8,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 export class SidenavComponent implements OnInit {
 
   opened=true;
-  constructor() { }
+  sections:any;
+  constructor(private questionsService: QuestionsService) { }
 
   ngOnInit(): void {
+    this.sections = this.questionsService.getQuestionare()["sections"];
   }
 
+  
 }

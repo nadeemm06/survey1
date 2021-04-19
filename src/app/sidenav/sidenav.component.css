@@ -2,18 +2,18 @@
     background-color: #111;
 }
 
-p{
+/* p{
     color: cornsilk;
     padding: 0.5em 1em 0 2em;
-}
+} */
 
 ng-sidebar-container{
-    height: 100vh;
+    height: 80vh;
 }
 
 ::ng-deep .ng-sidebar{
     width: 280px;
-    padding: 2em 3em;
+    padding: 2em 2em;
     box-shadow: 0 0 2.5em rgba(85, 85, 85, 0.5);
 }
 

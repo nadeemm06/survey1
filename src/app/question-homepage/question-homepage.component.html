@@ -1,13 +1,85 @@
-  <!-- <div class="row">
-  <div class="col-md-3">
-    <app-sidenav></app-sidenav> 
-  </div>
+<div class="row">
+   <div class="col-md-4">
+      <app-sidenav ></app-sidenav>
+   </div>
 
-  <div class="col-md-8 pt-3">
-    <div class="container">
-      <div class="row">
-    
-        <div class="card">
+   <div class="col-md-7 pt-3">
+        
+      <div class="row">    
+            <div class="card p-3">
+              <ul><p class="text-right">Total Points: {{totalPoints}}</p>
+                <li class="list-group-item">Section: {{questionare[currentSection]['section']}}
+                  <ul>
+                    <li class="list-group-item">Parameter: {{questionare[currentSection].parameters[currentParameter].parameter}}
+                      <ul>
+                        <li class="list-group-item">Level: {{questionare[currentSection].parameters[currentParameter].level[currentLevel].questionLevel}}
+                          <ul>
+                            <li class="list-group-item">Question {{questionare[currentSection].parameters[currentParameter].level[currentLevel].questions[currentQuestion].questionNo}}
+                              {{questionare[currentSection].parameters[currentParameter].level[currentLevel].questions[currentQuestion].questionDescription}}
+                              <ul>
+                                <li class="list-group-item  mt-1" *ngFor="let r of questionare[currentSection].parameters[currentParameter].level[currentLevel].questions[currentQuestion].response">
+                                  <input type="radio" name="options"  (change)="onClick(r.option,r.points, r.evidence, r.comment)" [disabled]="answerSelected">
+                                  {{r.option}} {{r.points}}
+                                </li>
+                                <ul class="card mt-1">
+                                  <div class="row p-2" >
+                                    <div class="list-group-item text-center " id="btn-wrapper">
+                                      <button class="btn btn-success" (click)="nextClick(questionare[currentSection].parameters[currentParameter].level[currentLevel].questions,options,point,currentSection,currentQuestion,currentParameter,currentLevel)" [disabled]="btnDisabled"   type="submit">Submit</button>
+                                    </div>
+                                    <li class="list-group-item text-center" id="upload-wrapper" [hidden]="fileHide">              
+                                        <button class="btn btn-secondary" (click)="fileInput.click()" >Attach File</button>
+                                        <input style="display: none"  #attachments type="file" (change)="onFileChanged($event)" #fileInput multiple="true">
+                                          <div *ngFor="let selected of listOfFiles;let index = index">
+                                            <b>{{selected}}</b>
+                                            <button class="btn btn-danger m-2" (click)="removeSelectedFile(index)">Delete</button>
+                                          </div>
+                                    </li>
+                                    <li class="list-group-item text-center" id="comment-wrapper" [hidden]="commentHide">
+                                        <label for="comment" ></label>
+                                        <textarea id="comment" placeholder="your comment here"  ></textarea>
+                                    </li>
+                                  </div>
+                                </ul>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+      </div>
+      
+        
+        
+   </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ <!-- <div class="card">
           <div class="card-body">
     
                 <div class="col-sm-8 offset-2">
@@ -57,16 +129,12 @@
                 </div>
     
           </div>
-        </div>
-    
-      </div>
-    </div>
-    
-    
-    </div>
-      
+        </div> -->
 
- -->
+
+ 
+
+
 
 
 
@@ -192,30 +260,19 @@
 
 
 
-<div class="card p-5 bg-">
-  <ul><p class="text-right">Total Points: {{totalPoints}}</p>
-    <li class="list-group-item">Section: {{questionare[currentSection].section}}
-      <ul>
-        <li class="list-group-item">Parameter: {{questionare[currentSection].parameters[currentParameter].parameter}}
-          <ul>
-            <li class="list-group-item">Level: {{questionare[currentSection].parameters[currentParameter].level[currentLevel].questionLevel}}
-              <ul>
-                <li class="list-group-item">Question {{questionare[currentSection].parameters[currentParameter].level[currentLevel].questions[currentQuestion].questionNo}}
-                  {{questionare[currentSection].parameters[currentParameter].level[currentLevel].questions[currentQuestion].questionDescription}}
-                  <ul>
-                    <li class="list-group-item" *ngFor="let r of questionare[currentSection].parameters[currentParameter].level[currentLevel].questions[currentQuestion].response">
-                      <input type="radio" name="options" (change)="onClick(r.option,r.points,currentSection,currentQuestion,currentParameter,currentLevel)" [disabled]="answerSelected"> {{r.option}} {{r.points}}
-                    </li> 
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</div>
+
+
+
+
+
+  
+
+
+
+<!-- <div class="card">
+    <input hidden type="file" #uploader (change)="uploadFile($event)"/>
+    <button (click)="uploader.click()">Upload</button>
+</div> -->
 
 
 <!-- 

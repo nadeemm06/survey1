@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Login } from "../login";
 import { LoginService } from "../login.service";
+import { LoginStatus } from "../login-status";
 
 @Component({
   selector: 'app-login',
@@ -20,10 +21,12 @@ export class LoginComponent implements OnInit {
   Error=false;
   message: string;
   loginStatus="false";
+
+  user:LoginStatus;
   
   
 
-  constructor(private fb: FormBuilder,private router:Router,private route:ActivatedRoute, private loginService: LoginService) {
+  constructor(private fb: FormBuilder,private router:Router,private route: ActivatedRoute, private loginService: LoginService) {
     this.createForm();
     
    }
@@ -47,27 +50,33 @@ export class LoginComponent implements OnInit {
     // console.log(form.email.value);
     
    if(this.loginForm.valid){
-    let loginValue = this.loginForm.value;
+   // let loginValue = this.loginForm.value;
+    //console.log(loginValue,"lv")
    // this.login(loginValue);
      console.log("If first level");
       if(this.login.email=="a@b.com" && this.login.password=="Test@1234"){
-         // if(this.loginForm.email=="ndm@gmail.com" && this.loginForm.password=="lti@1234"){
+        console.log("If second level");
+          let loginValue = this.loginForm.value;
+          console.log(loginValue,"lv")
            let userEmail = this.login.email;
-            localStorage.setItem('email', userEmail);
-            this.router.navigate(['/welcome']);
+           this.loginStatus="true";
+            sessionStorage.setItem('email', userEmail);
+            sessionStorage.setItem('loginStatus',this.loginStatus);
+            console.log('email',"eeeeeeeeee")
+            console.log('loginStatus',"lssss")
+            //let data:any=this.loginForm.value;
+           // this.router.navigate(['/welcome'],{queryParams:{data:btoa(JSON.stringify(data))}});
+            this.router.navigate(['/welcome']).then(()=>{
+              console.log(sessionStorage.getItem('email'))
+              window.location.reload();
+            });
      
     } else{
       console.log("Else part");
      // alert(JSON.stringify("Inavlid credentials"))
-     
-      
-     this.Error = true;
-     this.message = "invalid user id/password"
-        
-        setTimeout(() => {
-          window.location.reload();
-        }, 3000);
-        
+        this.Error = true;
+        this.message = "invalid user id/password"
+        this.loginForm.reset();
         this.router.navigate(['/login'])
     }
 

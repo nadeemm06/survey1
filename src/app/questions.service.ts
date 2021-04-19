@@ -1,87 +1,40 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError} from "rxjs/operators";
 import { Ques } from "./question";
-import { Questionaire } from "./questionaire";
 import  Questionaires  from "./questionaires.json";
-import Conv from "./conv.json"
-import Q from "./q.json"
-
+import New from './question-homepage/new.json';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionsService {
-  conv: {section:string,parameter:string,questionLevel:string,questionNo:string,questionDescription,response:{option:string,points:number}[],}[]= Conv;
 
-  getConv(){
-    return this.conv
-  }
-  questionaires :{Section:string,Parameter:string,
-                   QL1 : {
-                          QNo: number,
-                          QDesc:string,
-                          Response:string,
-                          points:number}[],}[]=Questionaires;
+  private questionareUrl = 'assets/data/new.json';
 
- // q: Questionaire[]= [];
-    q: []= Q;
-  getq(){
-    return this.q;
-  }
+  constructor(private http: HttpClient) { }
+  
 
-  questions: Ques[] = [
-    {
-      question: "What's your name",
-      answer: [
-        { option: "Nairobi", correct: false},
-        { option: "Tokyo", correct: true},
-      ]
-    },
-    {
-      question: "What's your age",
-      answer: [
-        { option: "10", correct: true},
-        { option: "20", correct: false},
-      ]
-    },
-    {
-      question: "What's your occupation",
-      answer: [
-        { option: "Doctor", correct: false},
-        { option: "Engineer", correct: true},
-      ]
-    },
-    {
-      question: "What's your creds",
-      answer: [
-        { option: "20", correct: true},
-        { option: "30", correct: false},
-      ]
-    },
-    {
-      question: "What's your play",
-      answer: [
-        { option: "football", correct: false},
-        { option: "cricket", correct: true},
-      ]
-    },
+  // getQuestionare(){
+  //   return this.http.get(this.questionareUrl);
+  // }
 
-  ]
+  // private handleError(err: HttpErrorResponse){
+  //   console.log(err)
+  // }
 
-
-  getQues(){
-    return this.questions;
+  newQuestionare:[] = New;
+  getQuestionare(){
+    return this.newQuestionare
   }
 
 
+ 
 
 
 
 
-
-
-
-
+/*
 
  //----------------Properties------------------
   readonly rootUrl = 'http://localhost:8088';
@@ -106,4 +59,10 @@ export class QuestionsService {
     return this.http.post(url, formdata);
   }
 
+  */
+
  }
+function tap(arg0: (data: any) => void): import("rxjs").OperatorFunction<Object, unknown> {
+  throw new Error('Function not implemented.');
+}
+

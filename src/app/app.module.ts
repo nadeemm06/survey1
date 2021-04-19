@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination'; 
-
+import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,11 @@ import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { QuestionHomepageComponent } from './question-homepage/question-homepage.component';
 import { QuestionsService } from './questions.service';
+import { LoginService } from './login.service';
+import { ThankyouComponent } from './thankyou/thankyou.component';
+import { AuthGuard } from "./authGuards/auth.guard";
+import { PreventLoggedInAccessGuard } from "./authGuards/prevent-logged-in-access.guard";
+import { CookieModule } from 'ngx-cookie';
 
 
 @NgModule({
@@ -27,7 +32,8 @@ import { QuestionsService } from './questions.service';
     WelcomeComponent,
     HeaderComponent,
     SidenavComponent,
-    QuestionHomepageComponent
+    QuestionHomepageComponent,
+    ThankyouComponent
   ],
   imports: [
     BrowserModule,
@@ -38,9 +44,11 @@ import { QuestionsService } from './questions.service';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    NgxPaginationModule
+    CookieModule.forRoot(),
+    NgxPaginationModule,
+    BackButtonDisableModule.forRoot( {preserveScrollPosition: true} )
   ],
-  providers: [QuestionsService],
+  providers: [LoginService, QuestionsService,AuthGuard, PreventLoggedInAccessGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

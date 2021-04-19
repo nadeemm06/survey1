@@ -11,6 +11,9 @@ import { WelcomeService } from "../welcome.service";
 })
 export class WelcomeComponent implements OnInit {
 
+  userEmail: string;
+  data:any;
+
   welcomeForm: FormGroup;
 
   welcome: Welcome = new Welcome();
@@ -36,6 +39,17 @@ export class WelcomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.userEmail = sessionStorage.getItem('email');
+    console.log(this.userEmail,"wemail");
+
+    // this.route.queryParams.subscribe((params)=>{
+    //   console.log(params,"param")
+    //   this.data=JSON.parse(atob(params.data));
+    // });
+    
+
+
     this.welcomeComponents = this.welcomeService.getWelcome();
    // console.log(this.welcomeComponents[0].Account);
     this.account = this.welcomeComponents[0].Account;
