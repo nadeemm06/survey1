@@ -43,13 +43,7 @@ export class QuestionHomepageComponent implements OnInit {
   response:any;
 
 
-  // new:{ sections:{section:string;
-  //      parameters:{parameter:string;
-  //      level:{ questionLevel:number;
-  //      questions:{ questionNo:number;
-  //           questionDescription:string;
-  //           response:{option:string;points:number}[],}[],}[],}[],}[],
-  //          }[]= New;
+  
 
   
 
@@ -60,8 +54,7 @@ export class QuestionHomepageComponent implements OnInit {
   currentNew=0;
 
   
-  //conv: {section:string,parameter:string,questionLevel:string,questionNo:string,questionDescription,response:{option:string,points:number}[],}[]= Conv;
-  currentConv :any;
+ 
    
 
   
@@ -102,130 +95,6 @@ export class QuestionHomepageComponent implements OnInit {
   //     },
   //    error: err => this.errorMessage = err
   //  });
-   
-     
-
-    // this.sections = this.new["sections"];
-       // console.log(this.sections)
- // this.TestEnvsection = this.new["sections"][0];
-  //this.TestAutosection = this.new["sections"][1];
-  //console.log(this.TestEnvsection);
-      
-  // console.log(this.TestEnvsection.parameters,"sdsa");
-
-// First section starts here
-  // this.TestEnvsection.parameters.forEach(sectionlevel => {
-  //   sectionlevel.level.forEach(parameterlevel => {
-  //     parameterlevel.questions.forEach(questionsl1 => {
-  //       console.log(questionsl1,"questions");
-
-  //       this.level1questions.push(questionsl1)
-  //     });
-  //   });
-  // });
-
-
-    // this.TestEnvsection.parameters.forEach(parameterlevel => {
-    //   this.parameter1.push(parameterlevel)
-    //  // console.log(parameterlevel,"paralevel");
-    //   parameterlevel.level.forEach(questionlevel => {
-    //     this.question1.push(questionlevel)
-    //    // console.log(questionlevel,"questionlevel");
-    //     questionlevel.questions.forEach(questionsl1 => {
-    //     //  console.log(questionsl1,"questions");
-  
-    //       this.level1questions.push(questionsl1)
-    //     });
-    //  });
-    // });
-
-
-
- // console.log(this.level1questions,"test");
-
-
-  // active = this.TestEnvsection
-
-  // if(localvariable){
-  //     Active = this.TestEnvsection
-  // }
-
-  // Second section starts here
-  // this.TestAutosection.parameters.forEach(sectionlevel => {
-  //   console.log(sectionlevel,"section level")
-  //   sectionlevel.level.forEach(parameterlevel => {
-  //     console.log(parameterlevel,"parameter");
-  //     parameterlevel.questions.forEach(questions => {
-  //       console.log(questions,"questions");
-  //     });
-  //   });
-  // });
-
-
-
-
-
-    //  this.parameter=this.section.parameters;
-    //  console.log(this.parameter, "ppppppp");
-     
-    //  this.level = this.parameter;
-    //  this.level.forEach(element => {
-    //    console.log(element,'level');
-    //  });
-
-    //  console.log(this.level, "lllll");
-
-     
-      
-
-    //  this.questions = this.level[0].questions;
-    // this.level.forEach(element => {
-      // this.questArray = element.questionLevel;
-      // this.questArray.push(element.questions)
-      // console.log(element.questions[0],"elements")
-      
-    // });
-    //  console.log(this.questArray, "qqqqq")
-
-    //  this.response = this.questions[0].response;
-    //  console.log(this.response, "rrrr");
-
-
-  //   this.questionare = this.sections.map((sec)=>{
-  //    // console.log(sec,"section")
-  //     this.paraObject = sec.parameters.map((para)=>{
-  //      // console.log(para, "parameter")
-  //       this.levelObject = para.level.map((lev)=>{
-  //       //  console.log(lev, "level")
-  //         this.questionObject = lev.questions.map((que)=>{
-  //        //   console.log(que, "question")
-  //           this.responseObject = que.response.map((res)=>{
-  //          //   console.log(res, "response")      
-  //               return {option:res.option, points:res.points};     
-  //           });
-  //           // que.option = this.responseObject;
-  //           return {questionNo: que.questionNo,questionDescription:que.questionDescription};
-  //         });
-  //        // lev.questionNo = this.questionObject;
-  //        // console.log(this.questionObject,"qo")
-          
-  //         return lev;
-  //       });
-  //      // para.questionLevel = this.levelObject;
-        
-  //       return para;
-  //       //return this.parameter.find((para, index) => {return index === para});
-  //   });
-  // //  sec.parameter = this.paraObject;
-  
-  //   return sec;    
-    
-  // });
-  
-
-
-
-
 
   }
 
@@ -389,11 +258,9 @@ export class QuestionHomepageComponent implements OnInit {
  
   
 
-//   uploadFile($event) {
-//     console.log($event.target.files[0]); // outputs the first file
-// }
+
  
-//adding  files
+//for uploading  files
 @ViewChild('attachments') attachment: any;
 fileList: File[] = [];
 listOfFiles: any[] = [];
